@@ -4,4 +4,10 @@
         <%= @user.name %>
       </h1>
     </section>
+    <% if @user.events.any? %>
+      <h3>Created Events (<%= @user.events.count %>)</h3>
+      <ol class="microposts">
+        <%= render @events %>
+      </ol>
+    <% end %>
 </div>
