@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Event Details</h1>
+    <h2>Name: <%= @event.name %></h2>
+    <p>Description: <%= @event.description %></p>
+
+    <p class="m-b-2">created by: <%= @event.creator.name %></p>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Event Attendees</h4>
+            <% if @event.attendees.any? %>
+                <ul class="list-group list-group-flush">
+                    <% @event.attendees.each do |attendee| %>
+                        <li class="list-group-item"><%= attendee.name %> <li>
+                    <% end %>
+                </ul>
+            <% else %>
+                <div class="alert alert-info">No event attendees yet</div>
+            <% end %>
+        </div>
+    </div>
+</div>

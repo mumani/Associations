@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   
   def show
-    if params[:id].nil?
-      @user = User.find_by(id: session[:user_id])
-    else
-      @user = User.find(params[:id])
-    end
+    @user = User.find_by(id: params[:id])
+      
+    @upcoming_events = current_user.upcoming_events
+    @previous_events = current_user.previous_events
   end
 
   def new
@@ -26,10 +25,15 @@ class UsersController < ApplicationController
     if params[:user]
       user = User.find(params[:user][:id])
       if user
-        p user
         log_in(user)
+        redirect_to user
       end
     end
+  end
+
+  def signout
+    log_out if logged_in?
+    redirect_to root_url
   end
 
   private

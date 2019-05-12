@@ -1,13 +1,76 @@
-<div class="row">
-    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <% if @user.events.any? %>
-      <h3>Created Events (<%= @user.events.count %>)</h3>
-      <ol class="microposts">
-        <%= render @events %>
-      </ol>
-    <% end %>
+
+<div class="container">
+    <div class="row m-y-2">
+      <div class="col-lg-4 pull-lg-8 text-xs-center">
+          <h1 class="m-t-2"><%= @user.name %></h1>
+      </div>
+
+      <div class="col-lg-8 push-lg-4">
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+                  <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Created Events (<%= @user.events.count %>)</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Attending (<%= @upcoming_events.count %>)</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Attended (<%= @previous_events.count %>)</a>
+              </li>
+          </ul>
+          <div class="tab-content p-b-3">
+              <div class="tab-pane active" id="profile">
+                  <div class="row">
+                      <div class="col-md-6">
+                        <% if @user.events.any? %>
+                          <ul class="list-group list-group-flush">
+                            <% @user.events.each do |event| %>
+                              <li class="list-group-item"><%= event.name %> : <%= event.description %><li>
+                            <% end %>
+                          </ul>
+                        <% else %>
+                          <div class="alert alert-info">No event created yet</div>
+                        <% end %>
+                      </div>
+                  </div>
+                  <!--/row-->
+              </div>
+
+              <div class="tab-pane" id="messages">
+                  <h4 class="m-y-2">Future Events</h4>
+                  <div class="row">
+                      <div class="col-md-6">
+                        <% if @upcoming_events.any? %>
+                          <ul class="list-group list-group-flush">
+                            <% @upcoming_events.each do |event| %>
+                              <li class="list-group-item"><%= event.name %> : <%= event.description %><li>
+                            <% end %>
+                          </ul>
+                        <% else %>
+                          <div class="alert alert-info">No event created yet</div>
+                        <% end %>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="tab-pane" id="edit">
+                  <h4 class="m-y-2">Past Events</h4>
+                  <div class="row">
+                      <div class="col-md-6">
+                        <% if @previous_events.any? %>
+                          <ul class="list-group list-group-flush">
+                            <% @previous_events.each do |event| %>
+                              <li class="list-group-item"><%= event.name %> : <%= event.event_date %><li>
+                            <% end %>
+                          </ul>
+                        <% else %>
+                          <div class="alert alert-info">No event created yet</div>
+                        <% end %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        
+    </div>
 </div>
+<hr>

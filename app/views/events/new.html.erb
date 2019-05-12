@@ -1,2 +1,10 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<%= form_for(@event) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, placeholder: "Enter Description...", class: 'form-control' %>
+  
+  <%= f.submit "Create Event", class: "btn btn-primary" %>
+<% end %>
