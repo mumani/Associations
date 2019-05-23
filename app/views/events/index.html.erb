@@ -1,24 +1,79 @@
 <div class="container">
     <h2>All Events</h2>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Creator</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @events.each do |event| %>
+    <div class="d-flex justify-content-end mb-3">
+      <button type="button" class="btn btn-primary"><%= link_to 'Create Event', new_event_path, class: 'white' %></button>
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+        <h3 class="pl-4 pt-4">Upcoming Events</h3>
+      </div>
+
+<div class="card-body">
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= event.name %></td>
-            <td><%= event.description %></td>
-            <td><%= link_to event.creator.name, event.creator %></td>
-            <td><%= link_to 'Show', event %></td>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Creator</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @future.each do |event| %>
+            <tr>
+              <td><%= event.name %></td>
+              <td><%= event.description %></td>
+              <td><%= link_to event.creator.name, event.creator %></td>
+              <td><%= link_to 'Show', event %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="card mt-4">
+
+    <div class="card-title">
+        <h3 class="pl-4 pt-4">Past Events</h3>
+      </div>
+
+      <div class="card-body">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Creator</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @past.each do |event| %>
+            <tr>
+              <td><%= event.name %></td>
+              <td><%= event.description %></td>
+              <td><%= link_to event.creator.name, event.creator %></td>
+              <td><%= link_to 'Show', event %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    
+
+
+    
+
   </div>

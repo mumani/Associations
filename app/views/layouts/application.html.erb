@@ -23,7 +23,10 @@
 
         <% else %>
           <ul>
-            <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Log in", login_path, class: 'white' %></button></li>
+            <% unless current_page?('/login') %>
+              <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Log in", login_path, class: 'white' %></button></li>
+            <% end %>
+            
             <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Sign Up", signup_path, class: 'white' %></button></li>
           </ul>
         <% end %>
