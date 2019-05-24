@@ -2,8 +2,10 @@
 <div class="container">
     <div class="row m-y-2">
       <div class="col-lg-4 pull-lg-8 text-xs-center">
-          <h1 class="m-t-2"><%= @user.name %></h1>
-          <div class="d-flex justify-content-end mb-3">
+          <h3 class="m-t-2"><%= @user.name %></h3>
+          <p>User ID: <%= @user.id %> (Used for Logging In)<p>
+
+          <div class="d-flex justify-content-start mb-3">
             <button type="button" class="btn btn-primary"><%= link_to 'Create Event', new_event_path, class: 'white' %></button>
           </div>
       </div>
