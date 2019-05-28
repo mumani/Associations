@@ -25,7 +25,7 @@
 
     <div class="d-flex justify-content-end mt-3">
       <%  unless current_user.event_attendance.exists?(@event.id) %><button type="button" class="btn btn-primary mx-2">
-        <%= link_to 'Attend Event', event_attend_path(@event), class: 'white' %></button><% end %>
+        <%= link_to 'Attend Event', attendances_create_path(@event), class: 'white' %></button><% end %>
       <button type="button" class="btn btn-default"><%= link_to 'Go Back', events_path, class: 'white' %></button>
     </div>
 </div>

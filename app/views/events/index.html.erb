@@ -23,14 +23,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @future.each do |event| %>
-            <tr>
-              <td><%= event.name %></td>
-              <td><%= event.description %></td>
-              <td><%= link_to event.creator.name, event.creator %></td>
-              <td><%= link_to 'Show', event %></td>
-            </tr>
-          <% end %>
+          <%= render partial: "event", collection: @future %>
         </tbody>
       </table>
       </div>
@@ -58,14 +51,10 @@
           </tr>
         </thead>
         <tbody>
-          <% @past.each do |event| %>
-            <tr>
-              <td><%= event.name %></td>
-              <td><%= event.description %></td>
-              <td><%= link_to event.creator.name, event.creator %></td>
-              <td><%= link_to 'Show', event %></td>
-            </tr>
-          <% end %>
+            
+              <%= render partial: "event", collection: @past %>
+            
+        
         </tbody>
       </table>
       </div>
