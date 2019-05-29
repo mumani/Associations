@@ -16,7 +16,6 @@
         
         <% if current_user  %>
         <ul class="list-inline-mb-0">
-          <li class="list-inline-item"><%= link_to current_user.name %></li>
           <li class="list-inline-item"><%= link_to "All Events", events_path %></li>
           <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Log out", signout_path, method: :delete, class: "white" %></button></li>
         </ul>
