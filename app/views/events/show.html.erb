@@ -1,0 +1,36 @@
+<div class="container">
+    <% if @event.event_date < Date.today %>
+        <p class="alert">Event already took place</p>
+    <% end %>
+
+    <h5>Event Details</h5>
+    <h2>Name: <%= @event.name %></h2>
+    <p>Description: <%= @event.description %></p>
+    <p>Date: <%= @event.event_date %></p>
+
+    <p class="m-b-2">created by: <%= @event.creator.name %></p>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Event Attendees</h4>
+            <% if @event.attendees.any? %>
+                <ul class="list-group list-group-flush">
+                    <% @event.attendees.each do |attendee| %>
+                        <li class="list-group-item"><%= attendee.name %> <li>
+                    <% end %>
+                </ul>
+            <% else %>
+                <div class="alert alert-info">No event attendees yet</div>
+            <% end %>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-end mt-3">
+      <%  unless can_attend?(@event) %><button type="button" class="btn btn-primary mx-2">
+        <%= link_to 'Attend Event', attendances_create_path(@event), class: 'white' %></button><% end %>
+      <button type="button" class="btn btn-default"><%= link_to 'Go Back', events_path, class: 'white' %></button>
+    </div>
+</div>

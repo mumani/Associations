@@ -10,6 +10,31 @@
   </head>
 
   <body>
-    <%= yield %>
+
+      <nav class="navbar navbar-light bg-light justify-content-between">
+        <%= link_to "Private Events", root_path, class: 'justify-content-start navbar-brand' %>
+        
+        <% if current_user  %>
+        <ul class="list-inline-mb-0">
+          <li class="list-inline-item"><%= link_to "All Events", events_path %></li>
+          <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Log out", signout_path, method: :delete, class: "white" %></button></li>
+        </ul>
+
+        <% else %>
+          <ul>
+            <% unless current_page?('/login') %>
+              <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Log in", login_path, class: 'white' %></button></li>
+            <% end %>
+            
+            <li class="list-inline-item"><button class="btn btn-info"><%= link_to "Sign Up", signup_path, class: 'white' %></button></li>
+          </ul>
+        <% end %>
+      </nav>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

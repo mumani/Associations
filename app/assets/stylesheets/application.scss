@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+li {
+  list-style: none;
+}
+
+.white {
+  color: white;
+  font-weight: 700;
+}
+
+.white:hover {
+  color: white;
+  text-decoration: none;
+}
