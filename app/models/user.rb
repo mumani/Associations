@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
 
     def upcoming_events_to_attend
-        self.event_attendance.where("event_date > ?", Date.today)
+        self.attended_events.where("event_date > ?", Date.today)
     end
     
     def previous_attended_events
-        self.event_attendance.where("event_date < ?", Date.today)
+        self.attended_events.where("event_date < ?", Date.today)
     end
 end
